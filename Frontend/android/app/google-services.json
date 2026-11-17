@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "130209922375",
+    "project_id": "coegv-mundial",
+    "storage_bucket": "coegv-mundial.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130209922375:android:4361e78428d71f88c3a062",
+        "android_client_info": {
+          "package_name": "com.coegv.fixture"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXa2ywecGJzYqWT6h3twqhzhgF2KXsc1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,764 @@
+/* ==========================================================================
+   VISTA GLOBAL DEL FIXTURE
+   =====================1===================================================== */
+.fixture-view {
+    background-color: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+    max-width:700px;
+    margin: 0 auto;
+    padding: 30vh 0px 12.5vh 0px;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;;
+}
+
+.fixture-header h2 {
+    font-size: 1rem;
+    text-align: center;
+    color: #aaaaaa;
+    font-weight: 400;
+    font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+    margin: 5px 0 15px 0;
+}
+
+.fixture-header {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    gap: 12px;
+    padding: 20px 5px;
+}
+
+.btn-sincronizar {
+    font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    background: linear-gradient(135deg, #30a02c 0%, #258a22 100%);
+    border: none;
+    border-radius: 999px;
+    padding: 10px 26px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 14px rgba(48, 160, 44, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-sincronizar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(48, 160, 44, 0.45);
+}
+
+.btn-sincronizar:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(48, 160, 44, 0.35);
+}
+
+.btn-sincronizar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-sincronizar .icono-sync {
+    font-size: 1rem;
+    line-height: 1;
+    display: inline-block;
+    transition: transform 0.6s ease;
+}
+
+.btn-sincronizar.sincronizando .icono-sync {
+    animation: girar-sync 1s linear infinite;
+}
+
+@keyframes girar-sync {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   MODAL DE CONFIRMACIÓN DE SINCRONIZACIÓN
+   ========================================================================== */
+.confirm-sync-modal {
+    max-width: 360px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+}
+
+.confirm-sync-modal .modal-header {
+    justify-content: center;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.confirm-sync-modal .modal-title {
+    color: #1a1a1a;
+}
+.modal-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0;
+    color: #1a1a1a;
+    text-align: center;
+    flex-grow: 1; 
+}
+.confirm-sync-text {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.confirm-sync-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.btn-confirm-cancelar {
+    font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    background: #2a2a2a;
+    border: 1px solid #444444;
+    border-radius: 999px;
+    padding: 10px 26px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.btn-confirm-cancelar:hover {
+    background: #3a3a3a;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   FILAS DE GRUPOS (6 Arriba - 6 Abajo)
+   ========================================================================== */
+.groups-row-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.groups-row-layout.bottom-groups {
+    margin-top: 15px;
+    margin-bottom: 0;
+    z-index: 30;
+}
+
+.group-card-btn {
+    flex: 1;
+    background: #ededed;
+    border: 1px solid #30a02c;
+    border-radius: 6px;
+    padding: 4px 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    max-width: 68px;
+}
+
+.group-flags-preview {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 4px;
+    margin-bottom: 2px;
+    background-color: #e0e0e0;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.flag-mini-circle {
+    width: 32px;
+    height: 23px;
+    object-fit: cover;
+    border-radius: 1px;
+}
+
+.flag-mini-circle.empty {
+    background-color: #2c2c2c;
+}
+
+.group-label {
+    font-size: 0.85rem;
+    color: #2c2c2c;
+    font-weight: bold;
+    font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   ESTRUCTURA DE LLAVES DE PLAYOFFS
+   ========================================================================== */
+.convergent-bracket-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    padding: 20px 0px;
+    gap: 40px;
+    z-index: 20;
+    margin: 0 auto;
+}
+
+.bracket-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+
+.bracket-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 10px !important;
+}
+
+/* ==========================================================================
+   DISEÑO EXCLUSIVO DE LAS TARJETAS (CUADRO BLANCO FIJO)
+   ========================================================================== */
+
+.playoff-flag-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playoff-mini-flag {
+    width: 22px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 1px;
+    border: 1px solid #dcdcdc;
+    display: block;
+}
+
+.playoff-mini-flag.empty {
+    background-color: #272222;
+    border: 1px dashed #cccccc;
+}
+
+/* ==========================================================================
+   NÚCLEO CENTRAL (3er Puesto | Copa | Campeón)
+   ========================================================================== */
+.center-core-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    padding: 5px 0px;
+}
+
+.core-side-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 85px;
+}
+
+.core-box-title {
+    font-size: 0.60rem;
+    font-weight: bold;
+    color: #aaaaaa;
+    margin-bottom: 5px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.core-cells .playoff-match-card {
+    width: 66px;          
+    height: 90px;
+    border: solid 2px hsl(25, 100%, 67%);
+    filter: drop-shadow(0px 4px 8px rgba(206, 134, 11, 0.5));
+}
+.core-cell .playoff-match-card {
+    width: 80px;
+    height: 120px;
+    filter: drop-shadow(0px 4px 8px rgba(246, 255, 0, 0.5));
+    border: #4c2f1a;
+}
+
+.core-cell .playoff-mini-flag {
+    width: 46px;
+    height: 32px;
+}
+.core-cells .playoff-mini-flag {
+    width: 32px;
+    height: 22px;
+}
+
+.core-trophy-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-world-cup-img {
+    height: 180px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 4px 8px rgba(246, 255, 0, 0.5));
+    
+}
+
+/* ==========================================================================
+   ESTILOS DE MODALS DE DETALLE
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 15px;
+}
+
+.modal-content {
+    color: #1a1a1a;
+    background-color: #f5f5f0;
+    border: 1px solid #ddddd8;
+    border-radius: 14px;
+    width: 90vw;
+    padding: 16px;
+    max-height: calc(80vh - 120px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.modal-matches-list {
+    padding: 0;
+    margin: 0;
+    list-style: none; 
+}
+
+
+.partido-grupo-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    margin: 10px 0;
+    background-color: #ffffff; 
+    border-radius: 12px;
+}
+
+
+.modal-match-team-local {
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.modal-match-goals-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 0 0 auto; 
+    padding: 0 15px;
+}
+
+
+.modal-match-team-visitante {
+    flex: 1;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modal-goals-fases-input {
+    width: 45px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 1px solid #e0e0da;
+    border-radius: 8px;
+    background-color: #cecece;
+    color: black;
+}
+
+.modal-match-divider {
+    color: #999;
+    font-weight: bold;
+}
+
+.team-name-modal {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.modal-flag-img {
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    width: 34px;
+    height: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+
+.modal-confirm-match-fase-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 8px;
+    transition: background-color 0.2s;
+}
+
+.modal-confirm-match-fase-btn:disabled {
+    background-color: #a5d6a7;
+    cursor: not-allowed;
+}
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: #cc4747;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: color 0.15s ease;
+    padding: 10px;
+    margin-left: auto; 
+}
+
+.modal-close-btn:hover {
+    color: #444;
+}
+
+.modal-table-positions {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+    color: #1a1a1a;
+}
+.modal-table-positions thead tr {
+    background-color: #eaeae4;
+    border-radius: 6px;
+}
+.modal-table-positions th {
+    padding: 6px 4px;
+    color: #666;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+.modal-table-positions th.text-left-padding {
+    padding-left: 8px;
+    text-align: left;
+}
+.modal-table-row {
+    border-bottom: 1px solid #e8e8e3;
+}
+.modal-table-row:last-child {
+    border-bottom: none;
+}
+
+.team-cell-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0 6px 4px;
+    color: #1a1a1a;
+}
+
+.playoff-team-side .modal-flag-img {
+    width: 148px;
+    height: 98px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+}
+.playoff-team-name{
+    color: #1a1a1a;
+    font-size: 20px;
+    font-family: 'Nexa';
+}
+/* ==========================================================================
+   VISTA FIXTURE: Footer Decorativo (Contenedor Solapado)
+   ========================================================================== */
+.fixture-footer {
+    width: 100%;
+    height: 500px;
+    background-image: url('/FooterFixture.webp');
+    background-size: 100%;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1; 
+    margin-top: -200px;   
+    margin-bottom: -100px; 
+    align-self: center; 
+    pointer-events: none;
+}
+
+.groups-row-layout.bottom-groups {
+    position: relative;
+    z-index: 5;
+}
+/* ==========================================================================
+   NUEVOS ESTILOS PARA LOS CUADROS DE PLAYOFFS
+   ========================================================================== */
+
+.bracket-box-color {
+    padding: 3px;
+    border-radius: 8px;
+    margin: 4px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.fase-16avos { 
+    border: 3px solid #4a90e2;
+    background: rgba(231, 242, 255, 0.973);
+    width: 40px;
+    padding: 10px 0px; 
+}
+.fase-octavos { 
+    border: 2px solid #50e3c2;
+    background: rgba(231, 242, 255, 0.973);
+    padding: 15px 5px; 
+ }
+    
+.fase-cuartos { 
+    border: 2px solid #f5a623; 
+    background: rgba(231, 242, 255, 0.973);
+    padding: 20px 15px; 
+ }
+.fase-semis  { 
+    border: 2px solid #775559; 
+    background: rgba(231, 242, 255, 0.973);
+    box-shadow: 0 0 10px rgba(228, 221, 184, 0.664); 
+    padding: 25px 20px; 
+}
+.fase-final   { 
+    border: 2px solid #ffd700; 
+    background: rgba(241, 243, 103, 0.973);
+    box-shadow: 0 0 10px rgba(255, 217, 0, 0.664); 
+}
+.tercer-puesto{
+    border: 2px solid #d08f02d2; 
+    background: rgba(167, 113, 43, 0.973);
+    box-shadow: 0 0 10px rgba(235, 216, 114, 0.664); 
+    padding: 10px 5px; 
+}
+
+
+.playoff-mini-flag {
+    width: 24px;  
+    height: 16px; 
+    object-fit: cover;
+    border-radius: 1px;
+    border: 1px solid #dcdcdc;
+    display: block;
+}
+.playoff-match-card {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    width: 40px; 
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.third-place-box .playoff-match-card {
+    width: 85px;
+    height: 100px;
+}
+.third-place-box .playoff-mini-flag {
+    width: 32px;
+    height: 22px;
+}
+
+.champion-box .playoff-match-card {
+    width: 110px;
+    height: 140px;
+}
+.champion-box .playoff-mini-flag {
+    width: 48px;
+    height: 32px;
+}
+
+.center-core-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%; 
+    padding: 20px 0px;
+}
+
+.core-side-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.core-cells .playoff-match-card, 
+.core-cell .playoff-match-card {
+    border: none !important;
+    filter: none !important;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-nav-btn {
+    background: #ffffff;
+    border: 1px solid #ddddd8;
+    color: #444;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+.modal-loading-text {
+    text-align: center;
+    color: #888;
+    font-size: 0.85rem;
+    padding: 20px 0;
+}
+
+.modal-nav-btn:hover {
+    background: #eeeee9;
+    border-color: #30a02c;
+}
+
+.modal-grupo-dots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 0 0 14px;
+}
+
+.grupo-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ccccc8;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.grupo-dot.active {
+    background: #30a02c;
+    transform: scale(1.3);
+}
+
+.fase-16avos .playoff-mini-flag { width: 24px; height: 16px; }
+.fase-octavos .playoff-mini-flag { width: 28px; height: 19px; }
+.fase-cuartos .playoff-mini-flag { width: 32px; height: 22px; }
+.fase-semis .playoff-mini-flag   { width: 36px; height: 25px; }
+.fase-final .playoff-mini-flag   { width: 68px; height: 48px; }
+.tercer-puesto .playoff-mini-flag { width: 52px; height: 32px; }
+.score{
+    color:#222
+}
+
+.widget-puntos-flotante {
+    position: fixed;
+    bottom: 120px; 
+    right: 16px;
+    z-index: 1000;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    min-width: 80px;
+}
+
+.widget-puntos-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.widget-puntos-valor {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+}
+
+.widget-puntos-detalle {
+    display: flex;
+    gap: 8px;
+    font-size: 0.72rem;
+    color: #aaa;
+    margin-top: 2px;
+}
+
+.widget-puntos-detalle span {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.playoff-modal-compact{
+    max-width: 600px;
+}

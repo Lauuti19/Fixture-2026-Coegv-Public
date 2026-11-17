@@ -1,0 +1,93 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Asegura que esté sobre todo */
+}
+
+/* El contenedor del banner */
+.modal-container {
+  text-align: center;
+    background-color: #f7f7f7;
+    border: 3px solid #f7f7f7;
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    position: relative;
+    box-shadow: 0 10px 30px #00000080;
+}
+
+/* La 'X' para cerrar (mitad dentro, mitad fuera) */
+.modal-close-button {
+  position: absolute;
+  top: -15px; /* Mitad del tamaño del botón hacia arriba */
+  right: -15px; /* Mitad del tamaño del botón hacia la derecha */
+  width: 30px;
+  height: 30px;
+  background-color: #1E1E1E; /* Mismo fondo del modal */
+  color: white;
+  border-radius: 50%;
+  border: 1px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close-button:hover {
+  background-color: #333;
+}
+
+.modal-image {
+  width: 100%;      
+  height: 200px;  
+  margin-bottom: 25px;
+  object-fit: cover; 
+  object-position: center;   
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.modal-container h3 {
+  color: #1c1b1b;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.modal-container p {
+    color: #2e2e2e;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 0px 50px;
+}
+
+/* Botón de acción principal */
+.modal-enable-button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #0d5f1f;
+  border: none;
+  border-radius: 12px;
+  width: 80%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.modal-enable-button:hover {
+  background-color: #0097A7;
+}

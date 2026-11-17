@@ -1,0 +1,10 @@
+*.zip
+Backend/serviceAccountKey.json
+Backend/clave_b64.txt
+.env
+.env.*
+!.env.example
+node_modules
+dist
+*.zip
+serviceAccountKey.json

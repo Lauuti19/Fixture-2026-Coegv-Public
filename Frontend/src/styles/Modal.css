@@ -1,0 +1,289 @@
+/* ==========================================================================
+   MODAL PLAYOFF — Info de fecha/hora/estadio
+   ========================================================================== */
+
+.playoff-match-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 10px;
+    margin-bottom: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.playoff-match-date {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #aaaaaa;
+    text-transform: capitalize;
+    letter-spacing: 0.03em;
+}
+
+.playoff-match-time {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.04em;
+}
+
+.playoff-match-stadium {
+    font-size: 0.9rem;
+    color: #e9e9e9;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Banner de bloqueado */
+.playoff-blocked-banner {
+    background: rgba(109, 109, 109, 0.12);
+    border:none;
+    border-radius: 8px;
+    color: #464545;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 7px 12px;
+    margin-bottom: 10px;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+
+/* Equipos versus */
+.playoff-versus-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 0;
+    margin-bottom: 4px;
+}
+
+.playoff-team-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.playoff-team-side .modal-flag-img {
+    width: 138px;
+    height: 78px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.playoff-team-name {
+    color: #1a1a1a;
+    font-size: 0.8rem;
+    font-family: 'Nexa', system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 180px;
+    text-align:center;
+}
+
+.vs-badge {
+    background-color: #16213e;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    padding: 16px 14px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+/* Inputs de goles */
+.modal-match-goals-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.modal-goals-input.large {
+    width: 64px;
+    height: 64px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background: #c2c2c2;
+    color: #1a1a1a;
+    font-family: 'Nexa', system-ui, sans-serif;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    -moz-appearance: textfield;
+}
+
+.modal-goals-input.large:focus {
+    outline: none;
+    border-color: #30a02c;
+    box-shadow: 0 0 0 3px rgba(48, 160, 44, 0.15);
+}
+
+.modal-goals-input.large:disabled {
+    background: #f0f0f0;
+    color: #aaa;
+    border-color: #e8e8e8;
+    cursor: not-allowed;
+}
+
+.modal-goals-input::-webkit-outer-spin-button,
+.modal-goals-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.modal-match-divider {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #ccc;
+    line-height: 1;
+}
+
+/* Select penales */
+.modal-select-penalties {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    color: #333;
+    background: #fafafa;
+    margin-bottom: 8px;
+    font-family: 'Nexa', system-ui, sans-serif;
+}
+
+/* Info penales bloqueado */
+.playoff-penales-info {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #555;
+    margin: 4px 0 8px;
+    padding: 8px;
+    background: #f0f0ec;
+    border-radius: 8px;
+}
+
+/* Texto equipos sin definir */
+.playoff-pending-text {
+    text-align: center;
+    color: #999;
+    font-size: 0.82rem;
+    margin: 16px 0;
+    font-style: italic;
+}
+
+/* Botones de acción */
+.modal-actions-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    justify-content: center;
+}
+
+.modal-confirm-match-btn {
+    font-family: 'Nexa', system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #30a02c 0%, #258a22 100%);
+    border: none;
+    border-radius: 999px;
+    padding: 11px 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(48, 160, 44, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.modal-confirm-match-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(48, 160, 44, 0.45);
+}
+
+.modal-confirm-match-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.modal-close-btn.secondary {
+    font-family: 'Nexa', system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #666;
+    background: #ececec;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    padding: 11px 22px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.modal-close-btn.secondary:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.playoff-resultado-oficial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #1a2e1a, #162e16);
+    border: 1px solid rgba(48, 160, 44, 0.3);
+    border-radius: 10px;
+    margin: 8px 0;
+}
+
+.playoff-resultado-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #30a02c;
+    text-transform: uppercase;
+}
+
+.playoff-resultado-scores {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.playoff-resultado-nombre {
+    font-size: 0.72rem;
+    color: #aaa;
+    flex: 1;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.playoff-resultado-marcador {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #ffffff;
+    font-family: 'Nexa', system-ui, sans-serif;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+}

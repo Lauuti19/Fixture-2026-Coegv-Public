@@ -1,0 +1,54 @@
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql-db
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: Fixture
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./BD/Fixture.sql:/docker-entrypoint-initdb.d/Fixture.sql
+    networks:
+      - Fixture-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./Backend
+    container_name: backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./Backend/.env.development
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - Fixture-network
+    restart: unless-stopped
+  
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db                  # Se conecta al nombre del servicio de arriba
+      PMA_USER: root
+      PMA_ALLOW_EMPTY_PASSWORD: "yes"
+    depends_on:
+      db:
+        condition: service_healthy  # Espera a que la DB esté lista para arrancar
+    networks:
+      - Fixture-network
+    restart: unless-stopped
+
+volumes:
+  db_data:
+
+networks:
+  Fixture-network:

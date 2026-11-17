@@ -1,0 +1,441 @@
+/* ==========================================================================
+   VARIABLES DE DISEÑO (Consistencia visual en la App)
+   ========================================================================== */
+.home-container {
+--bg-light-gray: #f7f7f7;
+--bg-dark-banner: #222222;
+--bg-dark-history: #333333; /* Gris intermedio para el historial */
+--bg-footer: #141414;
+
+--text-dark: #333333;
+--text-lighter-dark: #4b4b4b;
+--text-pitch-black: #111111;
+--text-white: #ffffff;
+--text-muted: #aaaaaa;
+--text-muted-light: #e0e0e0; 
+
+--green-gradient: linear-gradient(90deg, #59a646 0%, #3a7a2a 100%);
+--green: #59a646;
+--active-coral: #e55353;
+--border-dark: #333333;
+--border-footer: #252525;
+
+/* Estilos del contenedor general (Estilo App Móvil) */
+background-color: var(--bg-light-gray);
+color: var(--text-white);
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+max-width:700px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+padding-bottom: 12.5vh; 
+position: relative;
+
+}
+
+/* ==========================================================================
+   VISTA: ESTRUCTURA BASE
+   ========================================================================== */
+.home-main-header {
+width: 100%;
+height: 60vh;
+background-image: url('/Messi.webp');
+background-size: 100%;
+background-repeat: no-repeat;
+}
+
+/* ==========================================================================
+   COMPONENTE: PromoBanner (Publicidad Sensa)
+   ========================================================================== */
+.promo-banner {
+background-color: var(--bg-dark-banner);
+margin: -130px 10px 15px 20px; 
+padding: 15px;
+border-radius: 15px;
+display: flex;
+flex-direction: row; 
+align-items: center;
+justify-content: space-between;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+border: 1px solid var(--green-gradient);
+pointer-events: none;
+font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+}
+
+.promo-brand-column {
+display: flex;
+flex-direction: column;
+gap: 8px;
+flex: 1.2;
+}
+
+.promo-text {
+font-size: 1.2rem;
+font-weight: bold;
+line-height: 1.3;
+color: var(--text-white);
+}
+
+.logo-sensa {
+max-height: 80px;
+width: auto;
+object-fit: contain;
+}
+
+/* Columna 2: Redes Sociales */
+.promo-social-column {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 6px;
+flex: 1.5;
+text-align: center;
+}
+
+.social-title {
+font-size: 0.75rem;
+color: var(--text-muted);
+text-transform: uppercase;
+font-weight: bold;
+letter-spacing: 0.5px;
+}
+
+.social-icons-row {
+display: flex;
+flex-direction: row;
+gap: 8px;;
+}
+
+.social-icon {
+width: 20px;
+height: 20px;
+object-fit: contain;
+background-color: #e73b50;
+border-radius: 50%;
+padding:5px
+}
+
+.social-user {
+font-size: 1.4rem;
+font-weight: bold;
+color: var(--text-white);
+}
+
+/* Columna 3: Asset Telefónico Flotante */
+.promo-phone-column {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+flex: 1;
+}
+
+.phone-image {
+max-height: 190px;
+width: auto;
+object-fit: contain;
+position: relative;
+}
+
+/* ==========================================================================
+   COMPONENTE: NextMatchCard (Tarjeta del Partido)
+   ========================================================================== */
+.next-match-section {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+margin-top: 20px;
+padding: 0 20px;
+box-sizing: border-box;
+z-index: 50;
+}
+.partidos-del-dia{
+    width: 100%;
+max-width: 580px;
+}
+.partidos-del-dia-list{
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.match-card {
+background-color: var(--text-white);
+color: var(--text-dark);
+border-top-right-radius: 22.5px;
+border-bottom-left-radius: 22.5px;
+padding: 15px 15px 18px 15px;
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+border: 2px solid var(--green);
+text-align: center;
+width: 100%;
+box-sizing: border-box;
+position: relative;
+z-index: 2;
+}
+
+.match-card-header {
+background: var(--green-gradient);
+color: var(--text-white);
+margin: -15px -15px 12px -15px;
+padding: 20px;
+font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+}
+
+.match-card-header h3 {
+margin: 0;
+font-size: 1.2rem;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+font-weight: 800;
+color: var(--text-white);
+}
+.match-card-header h2 {
+margin: 0;
+font-size: 1.8rem;
+letter-spacing: 2px;
+text-transform: uppercase;
+font-weight: 900;
+margin-top: -10px;
+color: var(--text-white);
+}
+
+.match-datetime {
+display: block;
+font-size: 24px;
+color: #555555;
+margin-bottom: 15px;
+font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+}
+
+/* Fila de Equipos */
+.match-teams-row {
+display: flex;
+align-items: center;
+justify-content: space-around;
+margin-bottom: 12px; 
+}
+
+.team-info {
+display: flex;
+flex-direction: column;
+align-items: center;
+flex: 1;
+}
+
+.team-flag {
+width: 130px;
+height: 84px;
+object-fit: cover;
+border-radius: 4px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+margin-bottom: 6px;
+}
+
+.team-name {
+font-size: 0.85rem;
+font-weight: 800;
+color: var(--text-dark);
+
+}
+
+.match-separator {
+font-size: 1.8rem;
+font-weight: 900;
+color: var(--text-pitch-black);
+font-style: italic;
+}
+
+.match-location-footer {
+font-size: 18px;
+color: #413f3f;
+border-top: 1px solid #eeeeee;
+padding-top: 8px;
+margin-top: 12px;
+font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   COMPONENTE: HistorialPrevio (Estadísticas inferiores)
+   ========================================================================== */
+.standalone-stats-section {
+width: 100%;
+padding: 0 20px;
+box-sizing: border-box;
+z-index: 20; 
+}
+
+.history-block-container {
+background-color: #333333; /* Fondo gris sólido explícito */
+color: var(--text-white);
+width: 88%;
+max-width: 360px;
+border-bottom-left-radius: 16px;
+border-bottom-right-radius: 16px;
+padding: 28px 15px 20px 15px;
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: -22px auto 0 auto; /* Centrado automático horizontal */
+z-index: 20;
+position: relative;
+}
+.history-block-container p{
+    font-family: 'Nexa';
+    color: #aaaaaa;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    margin: '10px 0';
+    letter-spacing: 0.5px;
+}
+.history-block-standalone{
+background-color: none; /* Fondo gris sólido explícito */
+z-index: 10;
+}
+.history-badge-title {
+background-color: var(--text-white);
+color: #333333; /* Ajustado para que combine con el nuevo fondo */
+font-size: 0.85rem;
+font-weight: 800;
+padding: 6px 32px;
+border-bottom-right-radius: 20px;
+border-top-left-radius: 20px;
+text-align: center;
+letter-spacing: 0.5px;
+box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+width: 70%;
+margin: 20px auto 0px auto;
+z-index: 50;
+position: relative;
+}
+
+.history-results-list {
+width: 80%;
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 0 auto;
+background-color: var(--bg-dark-history); /* Fondo gris intermedio para el bloque de historial */
+}
+
+.history-match-row {
+text-align: center;
+width: 100%;
+padding: 8px 0;
+}
+
+.history-score-line {
+color: var(--text-white); /* Texto del score blanco */
+font-size: 1.1rem;
+font-weight: 700;
+letter-spacing: 0.5px;
+}
+
+.history-date-line {
+color: var(--text-muted-light); /* Texto de fecha gris claro legible */
+font-size: 0.75rem;
+font-weight: 500;
+margin-top: 2px;
+}
+
+.history-divider {
+width: 60%;
+border: 0;
+border-top: 1px solid rgba(255, 255, 255, 0.25);
+margin: 4px 0;
+}
+.Header {
+background-image: url('/Header.webp');
+background-size: 100%;
+background-repeat: no-repeat;
+z-index: 100; /* Le subimos el peso para que tape al contenido al scrollear */
+height: 100%;
+position: fixed;
+top: 0;
+left: 50%; 
+margin: 0 auto;
+transform: translateX(-50%);
+width: 100%;
+max-width: 700px;
+max-height: 300px;
+pointer-events: none;
+}
+
+/* ==========================================================================
+   VISTA HOME: Footer Decorativo
+   ========================================================================== */
+.home-footer {
+width: 100%;
+height: 300px; /* Ajustá el alto según el tamaño de tu diseño/imagen */
+background-image: url('/FooterHome.webp'); /* Reemplazá por tu archivo real */
+background-size: 100%;
+background-repeat: no-repeat;
+margin-bottom: -260px;
+pointer-events: none; 
+z-index: 10; 
+margin-top: -50px; 
+pointer-events: none;
+}
+/* ==========================================================================
+   COMPONENTE GLOBAL: NavFooter (Barra de Navegación Inferior)
+   ========================================================================== */
+.nav-footer {
+position: fixed;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 100%; 
+max-width: 700px;
+height: 12.5vh;
+background-color: #141414; /* Solución: Color harcodeado para evitar pérdidas de scope */
+border-top: 1px solid #252525; 
+display: flex;
+justify-content: space-around;
+align-items: center;
+z-index: 999;
+}
+
+.nav-item {
+background: none;
+border: none;
+color: #777777;
+display: flex;
+flex-direction: column;
+align-items: center;
+font-size: 0.65rem;
+font-weight: bold;
+text-transform: uppercase;
+text-decoration: none;
+flex: 1;
+gap: 5px;
+}
+
+.nav-item.active {
+color: var(--active-coral);
+}
+
+.nav-icon-img {
+width: auto;
+height: 66px;
+object-fit: contain;
+transition: transform 0.2s;
+mix-blend-mode: luminosity; 
+}
+
+.nav-item.active .nav-icon-img {
+transform: scale(1.1);
+}
+.home-status-message {
+    background-color: var(--green);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: var(--text-white);
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Nexa', system-ui, -apple-system, sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 50px;
+}
